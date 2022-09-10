@@ -1,0 +1,14 @@
+dependencies {
+    compileOnly(project(":Pojo"))
+
+    compileOnly(project(":PojoConverter"))
+}
+
+task createCatalog(type: JavaExec) {
+    group = "build"
+    description = "Create catalog from POJOs and configuration"
+    classpath = sourceSets.main.compileClasspath
+    main = "org.example.converter.Processor"
+}
+
+build.finalizedBy(createCatalog)

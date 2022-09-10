@@ -1,0 +1,21 @@
+[versions]
+lombok-version = "1.18.24"
+jetbrains-annotations-version = "23.0.0"
+log4j2-version = "2.18.0"
+byte-buddy-version = "1.12.16"
+reflections-version = "0.10.2"
+jackson-version = "2.13.4"
+
+[libraries]
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
+jetbrainsAnnotations = { group = "org.jetbrains", name = "annotations", version.ref = "jetbrains-annotations-version" }
+log4j2 = { group = "org.apache.logging.log4j", name = "log4j-api", version.ref = "log4j2-version" }
+byteBuddy = { group = "net.bytebuddy", name = "byte-buddy", version.ref = "byte-buddy-version" }
+reflections = { group = "org.reflections", name = "reflections", version.ref = "reflections-version" }
+jackson-core = { group = "com.fasterxml.jackson.core", name = "jackson-core", version.ref = "jackson-version" }
+jackson-annotations = { group = "com.fasterxml.jackson.core", name = "jackson-annotations", version.ref = "jackson-version" }
+jackson-databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson-version" }
+jackson-yml = { group = "com.fasterxml.jackson.dataformat", name = "jackson-dataformat-yaml", version.ref = "jackson-version" }
+
+[bundles]
+jackson = ["jackson-core", "jackson-annotations", "jackson-databind", "jackson-yml"]

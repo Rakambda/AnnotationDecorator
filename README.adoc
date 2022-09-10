@@ -1,0 +1,11 @@
+= AnnotationDecorator
+
+The goal here is to have a Pojo module that exposes POJOs as an interface with the outside world, while also having a catalog module that has the same POJOs but are decorated with annotations.
+
+Modules :
+
+* PojoApi : defines the API for POJOs (in this case only a @Pojo annotation)
+* Pojo : an implementation of the PojoApi
+* CatalogApi : defines the API for catalogs (contains every annotation that can be added on catalogs)
+* CatalogProcessor : represents a processor (maven MOJO) that takes a configuration file and create a catalog from a Pojo module
+* Catalog : a catalog with a CatalogProcessor configured
