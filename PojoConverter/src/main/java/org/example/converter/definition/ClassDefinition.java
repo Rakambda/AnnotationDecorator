@@ -1,16 +1,21 @@
 package org.example.converter.definition;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.example.converter.api.IClassAnnotationProvider;
+import org.example.converter.api.IFieldAnnotationProvider;
 import org.jetbrains.annotations.NotNull;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ClassDefinition{
-	@NotNull
-	private Map<String, FieldDefinition> fields = new HashMap<>();
+@Builder
+public class ClassDefinition {
+    @NotNull
+    @Singular
+    private Collection<IClassAnnotationProvider> annotations = new LinkedList<>();
+    @NotNull
+    @Singular
+    private Map<String, Collection<IFieldAnnotationProvider>> fields = new HashMap<>();
 }

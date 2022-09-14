@@ -4,11 +4,12 @@ dependencies {
     compileOnly(project(":PojoConverter"))
 }
 
-task createCatalog(type: JavaExec) {
+// In maven this would be a transformer I guess
+task createCatalog(type: JavaExec, dependsOn: classes) {
     group = "build"
     description = "Create catalog from POJOs and configuration"
-    classpath = sourceSets.main.compileClasspath
+    classpath = sourceSets.main.compileClasspath.plus(sourceSets.main.runtimeClasspath)
     main = "org.example.converter.Processor"
 }
 
-build.finalizedBy(createCatalog)
+//build.finalizedBy(createCatalog)

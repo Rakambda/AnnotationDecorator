@@ -7,6 +7,4 @@ dependencies {
     compileOnly(libs.lombok)
 
     annotationProcessor(libs.lombok)
-
-    api(project(":PojoApi"))
 }

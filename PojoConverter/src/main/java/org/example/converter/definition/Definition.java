@@ -1,18 +1,17 @@
 package org.example.converter.definition;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Definition{
-	@NotNull
-	private String packageName;
-	@NotNull
-	private Map<String, ClassDefinition> classes = new HashMap<>();
+@Builder
+public class Definition {
+    @NotNull
+    @Singular(value = "klass")
+    private Map<Class<?>, ClassDefinition> classes = new HashMap<>();
 }
