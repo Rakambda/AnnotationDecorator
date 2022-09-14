@@ -4,12 +4,21 @@ dependencies {
     compileOnly(project(":PojoConverter"))
 }
 
+sourceSets {
+    config {
+        java
+        compileClasspath += sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.compileClasspath.plus(sourceSets.main.runtimeClasspath)
+    }
+}
+
+
 // In maven this would be a transformer I guess
 task createCatalog(type: JavaExec, dependsOn: classes) {
     group = "build"
     description = "Create catalog from POJOs and configuration"
-    classpath = sourceSets.main.compileClasspath.plus(sourceSets.main.runtimeClasspath)
+    classpath = sourceSets.config.runtimeClasspath
     main = "org.example.converter.Processor"
 }
 
-//build.finalizedBy(createCatalog)
+build.finalizedBy(createCatalog)

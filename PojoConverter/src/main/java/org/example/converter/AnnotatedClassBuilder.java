@@ -32,7 +32,7 @@ public class AnnotatedClassBuilder {
         var byteBuddy = new ByteBuddy().redefine(klass);
         byteBuddy = byteBuddy.implement(CatalogEntry.class);
 
-        byteBuddy.annotateType(definition.getAnnotations().stream().map(IAnnotationProvider::get).toList());
+        byteBuddy = byteBuddy.annotateType(definition.getAnnotations().stream().map(IAnnotationProvider::get).toList());
 
         for (var field : klass.getDeclaredFields()) {
             var annotationProvider = definition.getFields().get(field.getName());
